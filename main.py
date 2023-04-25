@@ -76,35 +76,58 @@ cap = cv2.VideoCapture(0)
 # cv2.destroyAllWindows()
 
 
-# smoothing and blurring
+# # smoothing and blurring
+# while True:
+#     ret, frame = cap.read()
+#     if not ret:
+#         break
+
+#     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+#     color1 = np.array([0, 0, 0])
+#     color2 = np.array([255, 255, 255])
+
+#     mask = cv2.inRange(hsv, color1, color2)
+#     result = cv2.bitwise_and(frame, frame, mask=mask)
+
+#     kernel = np.ones((15,15), np.float32) / 225
+#     smoothed = cv2.filter2D(result, -1, kernel)
+
+#     gaussian_blur = cv2.GaussianBlur(result, (15, 15), 0)
+#     median_blur = cv2.medianBlur(result, 15)
+#     bilateral_blur = cv2.bilateralFilter(result, 15, 75, 75)
+
+#     cv2.imshow('frame', frame)
+
+#     cv2.imshow('mask', mask)
+#     cv2.imshow('result', result)
+#     cv2.imshow('smoothed', smoothed)
+
+#     cv2.imshow('gaussian_blur', gaussian_blur)
+#     cv2.imshow('median_blur', median_blur)
+#     cv2.imshow('bilateral_blur', bilateral_blur)
+
+#     if cv2.waitKey(20) & 0xFF == ord('q'):
+#         break
+
+# cap.release()
+# cv2.destroyAllWindows()
+
+
+# canny edge detection
 while True:
     ret, frame = cap.read()
     if not ret:
         break
 
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-    color1 = np.array([0, 0, 0])
-    color2 = np.array([255, 255, 255])
 
-    mask = cv2.inRange(hsv, color1, color2)
-    result = cv2.bitwise_and(frame, frame, mask=mask)
+    lower_threshold = int(max(0, (1.0 - 0.33) * 200))
+    upper_threshold = int(min(255, (1.0 + 0.33) * 200))
 
-    kernel = np.ones((15,15), np.float32) / 225
-    smoothed = cv2.filter2D(result, -1, kernel)
-
-    gaussian_blur = cv2.GaussianBlur(result, (15, 15), 0)
-    median_blur = cv2.medianBlur(result, 15)
-    bilateral_blur = cv2.bilateralFilter(result, 15, 75, 75)
+    edges = cv2.Canny(frame, lower_threshold, upper_threshold)
 
     cv2.imshow('frame', frame)
-
-    cv2.imshow('mask', mask)
-    cv2.imshow('result', result)
-    cv2.imshow('smoothed', smoothed)
-
-    cv2.imshow('gaussian_blur', gaussian_blur)
-    cv2.imshow('median_blur', median_blur)
-    cv2.imshow('bilateral_blur', bilateral_blur)
+    cv2.imshow('edges', edges)
 
     if cv2.waitKey(20) & 0xFF == ord('q'):
         break
