@@ -16,12 +16,12 @@ while True:
     faces = face_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
     # draw rectangle around faces
     for x, y, w, h in faces:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0))
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 3)
     # detect eyes
     eyes = eyes_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5)
     # draw rectangle around eyes
     for x, y, w, h in eyes:
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0))
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (255, 0, 0), 2)
     # show frame
     cv2.imshow("frame", frame)
     # press q to quit
