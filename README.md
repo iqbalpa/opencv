@@ -13,7 +13,7 @@ This program will show the landmarks of the fingers as well as the number of fin
 ## How to run
 
 1. Clone this repository
-2. Install opencv library with `pip install opencv-python`
+2. Install requirements: `pip install -r requirements.txt`
 3. Run the program you choose:
     - Face Detector: `python face-detector/main.py`
     - Finger Counter: `python hand-detector/finger_counter.py`
