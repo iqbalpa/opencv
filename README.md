@@ -4,11 +4,13 @@ These are some my exercise creating mini project with opencv python library.
 
 ## Face Detector & Eye Detector
 
-This program will create a green rectangle around someone's face and blue rectangle around their eyes.
+This program will create a green rectangle around someone's face and blue rectangle around their eyes. You can find the main program in `/face-detector/main.py`.
+![Face Detector](./assets/face-detector.png)
 
 ## Finger Counter
 
-This program will show the landmarks of the fingers as well as the number of fingers raised.
+This program will show the landmarks of the fingers as well as the number of fingers raised. You can find the main program in `/hand-detector/finger_counter.py`.
+![Finger Counter](./assets/finger-counter.jpg)
 
 ## How to run
 
